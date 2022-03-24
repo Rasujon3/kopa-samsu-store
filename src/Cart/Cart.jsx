@@ -4,7 +4,7 @@ import { BsFillCartFill } from "react-icons/bs";
 
 const Cart = ({ gun, handleAddToCart }) => {
   //   console.log(props.gun);
-  const { name, img, bullet, capacity, action, price, id } = gun;
+  const { name, img, bullet, capacity, action, price } = gun;
 
   return (
     <div className="card">
@@ -18,7 +18,7 @@ const Cart = ({ gun, handleAddToCart }) => {
         <p>Action: {action}</p>
       </div>
       <div className="add-to-cart">
-        <button onClick={() => handleAddToCart(id)}>
+        <button onClick={() => handleAddToCart(gun)}>
           <BsFillCartFill className="icon" />
         </button>
         <h1>$ {price}</h1>

@@ -6,6 +6,7 @@ import Navbar from "./Navbar/Navbar";
 function App() {
   const [guns, setGuns] = useState([]);
   const [cart, setCart] = useState([]);
+  console.log(cart);
 
   useEffect(() => {
     const url = `https://raw.githubusercontent.com/mir-hussain/guns/main/data.json`;
@@ -14,13 +15,19 @@ function App() {
       .then((data) => setGuns(data));
   }, []);
 
-  const handleAddToCart = (id) => {
-    console.log(id);
+  const handleAddToCart = (gun) => {
+    const newCart = [...cart, gun];
+    setCart(newCart);
   };
 
   return (
     <div>
       <Navbar />
+      <div>
+        {cart.map((item) => (
+          <h1 key={Math.random(item.id) * 10000}>{item.name}</h1>
+        ))}
+      </div>
       <div className="card-container">
         {guns.map((gun) => (
           <Cart key={gun.id} gun={gun} handleAddToCart={handleAddToCart} />
